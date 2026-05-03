@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # Keeping it at 20 for stability today
+          node-version: "24" # Keeping it at 20 for stability today
       - name: Install dependencies
         run: npm install
       - name: Build with Next.js
