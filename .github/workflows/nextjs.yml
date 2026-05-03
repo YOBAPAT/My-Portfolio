@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy Next.js
 
 on:
   push:
@@ -10,27 +10,20 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "24"
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+          node-version: "20" # Keeping it at 20 for stability today
+          cache: 'npm'
       - name: Install dependencies
         run: npm install
-      - name: Static HTML export with Next.js
+      - name: Build with Next.js
         run: npx next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
