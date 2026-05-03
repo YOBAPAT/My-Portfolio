@@ -26,6 +26,8 @@ concurrency:
 
 jobs:
   # Build job
+  env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   build:
     runs-on: ubuntu-latest
     steps:
