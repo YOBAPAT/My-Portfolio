@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: 'export',  // <--- This is the magic line!
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for GitHub Pages
   },
-}
+};
 
-export default nextConfig
+module.exports = nextConfig;
